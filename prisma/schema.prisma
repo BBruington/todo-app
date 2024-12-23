@@ -1,0 +1,20 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model todo {
+    id   String @id @default(cuid())
+    priority Int
+    complexity Int
+    title String
+    dueDate DateTime?
+    tags String[]
+    isChecked Boolean
+}
